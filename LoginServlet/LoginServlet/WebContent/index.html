@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>登录</title>
+</head>
+<script type="text/javascript">
+	function LoginSubmit(){
+		var user=document.Login.loginName.value;
+		var pass=document.Login.password.value;
+		if(user==null||user==''){
+			alert("请输入用户名");
+		}
+		else if(pass==null||pass==""){
+			alert("请输入密码");
+		}
+		else document.Login.submit();
+	}
+</script>
+<body bgcolor="blue">
+<form method="POST" name="Login" action="LoginServlet">
+ <p alian="left">用户名:<input type="text" name="loginName" size="20"></p>
+ <p alian="left">密&nbsp;码:<input type="text" name="password" size="20"></p>
+ <p alian="left">
+ <input type="button" value="提交" name="B1" onclick="LoginSubmit()">
+ <input type="hidden" name="bcolor" value="blue">
+ <input type="reset" value="重置" name="B2"></p>
+</form>
+</body>
+</html>
