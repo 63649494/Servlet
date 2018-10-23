@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--html是为长文件名的格式命名的。而htm是为了兼容过去的DOS命名格式存在的，在效果上没有区别的。  -->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Menu</title>
+<script language="javascript" src="../js/treeview.js"/>
+<style>
+A.tree{
+	Font-size:9pt;
+	Padding-left:3px;
+}
+</style>
+<script>
+var tree = new tree("tree");
+tree.text: "网站管理",
+             nodes: [
+               {
+               text: "图书管理",
+                nodes: [
+                   {
+                    text: "添加图书"
+                   },
+                   {
+                     text: "图书信息一览"
+                   }
+                 ]
+               },
+               {
+                 text: "用户管理",
+						nodes: [
+                   {
+                     text: "添加用户"
+                   },
+                   {
+                     text: "用户信息一览"
+                   }
+                 ]
+               }
+             ]
+
+</script>
+</head>
+
+<body>
+
+</body>
+</html>
