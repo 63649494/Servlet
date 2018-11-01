@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=GBK">
+<script language="javascript">
+function changPic(obj){
+	var filename = obj.value;
+	var filetype = filename.split(".");
+	var filenumber = filetype.length-1;
+	if(filetype[filenuber].toUpperCase()!="JPG"&&filetype[filenuber].toUpperCase()!="GIF"){
+	alert("请上传jpg或者gif格式的图片!");
+	obj.focus();
+		return false;
+	}else{
+		document.getElementById("showPic").src=filename;
+	}
+}
+function ret(){		//这里不懂
+	window.parent.frmMain.location="bookManage.jsp"
+}
+function sub(){
+	if(document.form1.isbn.value==""){
+		alert("请输入图书的ISBN编号。");
+	}else if(document.form1.bookName.value==""){
+		alert("请输入书名。");
+	}else if(document.form1.price.value==""){
+		alert("请输入图书的价格。");
+	}else{
+		document.form1.submit();
+	}
+}
+function fun_check_from(){
+}
+function checkIsFloat(){
+	var nc = event.keyCode;
+	if(nc<48||nc>57){
+		if(nc==46){
+			var s = document.form1.price.value;
+			for(var i=0;i<s.length;i++)
+			{
+				if(s.charAt(i)=='.'){
+					event.keyCode=0;
+					return;
+				}
+			}
+		}else{
+			event.keyCode=0;
+			return;
+	}
+	}
+}
+function res(){
+	document.getElementById("bookName").value="";
+	document.getElementById("isbn").value="";
+	document.getElementById("publisher").value="";
+	document.getElementById("price").value="";
+	document.getElementById("count").value="";
+	document.getElementById("delFile").innerHTML="<input name=pic type=file size=18 onChange='changPic(this)'>";
+	document.getElementById("showPic").src="../images/sou1.png";
+	document.getElementById("description").value="";
+	
+}
+</script>
+<title>网上书店后台管理系统</title>
+</head>
+<body>
+<from method=post name="form1" action="AddBookServlet">
+<table align="center">
+	<tr>
+		<td>新增图书信息</td>
+	</tr>
+	<tr >
+		<td>图片<img src="" id="showPic"></td>
+		<td>
+			<table>
+				<tr>
+					<td>图书名称:</td>
+					<td><input type="text" name="bookName"></td>
+				</tr>
+				<tr>
+					<td>ISBN:</td>
+					<td><input type="text" name="isbn"></td>
+				</tr>
+				<tr>
+					<td>出版社:</td>
+					<td><select>
+							<option value=""></option>
+							<option value="1">人民邮电出版社</option>
+							<option value="2">清华大学出版社</option>
+							<option value="3">电子工业出版社</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>价格:</td>
+					<td><input type="text" name="price">￥</td>
+				</tr>
+				<tr>
+					<td>库存量:</td>
+					<td><input type="text">(本/套)</td>
+				</tr>
+				<tr>
+					<td>图书封面:</td>
+					<td>
+					<input name="pic" type="file" size="18" onChange="changPic(this)">
+					</td>
+				</tr>
+				<tr>
+					<td>图书简介:</td>
+					<td><input type="text"></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2" align="center">
+			<button onClick="ret()" style="width:20%">返回</button>&nbsp;
+			<button onClick="res()" style="width:20%">重置</button>&nbsp;
+			<button onClick="sub()" style="width:20%">提交</button>
+		</td>
+	</tr>
+</table>
+</from>
+</body>
+</html>
