@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=GBK">
-<script language="javascript">
+<script type="text/javascript">
 function changPic(obj){
 	var filename = obj.value;
 	var filetype = filename.split(".");
@@ -64,9 +64,9 @@ function res(){
 <title>网上书店后台管理系统</title>
 </head>
 <body>
-<from method=post name="form1" action="AddBookServlet">
+<form method=post name="form1" action="AddBookServlet">
 <table align="center">
-	<tr>
+			<tr>
 		<td>新增图书信息</td>
 	</tr>
 	<tr >
@@ -120,6 +120,6 @@ function res(){
 		</td>
 	</tr>
 </table>
-</from>
+</form>
 </body>
 </html>

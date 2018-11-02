@@ -90,4 +90,14 @@
     <servlet-name>BookDao</servlet-name>
     <url-pattern>/BookDao</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddBookServlet</display-name>
+    <servlet-name>AddBookServlet</servlet-name>
+    <servlet-class>com.servlat.admin.AddBookServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddBookServlet</servlet-name>
+    <url-pattern>/admin/AddBookServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
