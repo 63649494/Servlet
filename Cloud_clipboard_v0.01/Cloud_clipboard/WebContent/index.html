@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>云剪贴板Cloud clipboard</title>
+</head>
+<body>
+<form method="post" name="clipAdd" action="AddServlet">
+<input name="clipBoard" id="clipBoard">要复制的内容在这里<button type="submit">提交</button><br>
+<input name="clipId" id="clipId">随机码在这里<br>
+</form>
+<form method="post" name="clipSearch" action="SearchServlet">
+<input name="clipId" id="clipId">随机码在这里<button type="submit">搜索</button><br>
+<input name="clipBoard" id="clipBoard">要复制的内容在这里<br>
+</form>
+</body>
+</html>
