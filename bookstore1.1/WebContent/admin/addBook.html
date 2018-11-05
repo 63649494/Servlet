@@ -7,7 +7,7 @@ function changPic(obj){
 	var filename = obj.value;
 	var filetype = filename.split(".");
 	var filenumber = filetype.length-1;
-	if(filetype[filenuber].toUpperCase()!="JPG"&&filetype[filenuber].toUpperCase()!="GIF"){
+	if(filetype[filenumber].toUpperCase()!="JPG"&&filetype[filenumber].toUpperCase()!="GIF"){
 	alert("请上传jpg或者gif格式的图片!");
 	obj.focus();
 		return false;
@@ -31,7 +31,7 @@ function sub(){
 }
 function fun_check_from(){
 }
-function checkIsFloat(){
+function checkIsFloat(){	//只能阻止字母空格符号输入，但不能阻止中文输入，遇到中文输入法就完蛋
 	var nc = event.keyCode;
 	if(nc<48||nc>57){
 		if(nc==46){
@@ -55,7 +55,7 @@ function res(){
 	document.getElementById("publisher").value="";
 	document.getElementById("price").value="";
 	document.getElementById("count").value="";
-	document.getElementById("delFile").innerHTML="<input name=pic type=file size=18 onChange='changPic(this)'>";
+	//document.getElementById("delFile").innerHTML="<input name=pic type=file size=18 onChange='changPic(this)'>"; 不知道是干嘛用的
 	document.getElementById("showPic").src="../images/sou1.png";
 	document.getElementById("description").value="";
 	
@@ -64,7 +64,7 @@ function res(){
 <title>网上书店后台管理系统</title>
 </head>
 <body>
-<form method=post name="form1" action="AddBookServlet">
+<form method="post" name="form1" action="AddBookServlet">
 <table align="center">
 			<tr>
 		<td>新增图书信息</td>
@@ -75,15 +75,15 @@ function res(){
 			<table>
 				<tr>
 					<td>图书名称:</td>
-					<td><input type="text" name="bookName"></td>
+					<td><input type="text" name="bookName" id="bookName"></td>
 				</tr>
 				<tr>
 					<td>ISBN:</td>
-					<td><input type="text" name="isbn"></td>
+					<td><input type="text" name="isbn" id="isbn"></td>
 				</tr>
 				<tr>
 					<td>出版社:</td>
-					<td><select>
+					<td><select name="publisher" id="publisher">
 							<option value=""></option>
 							<option value="1">人民邮电出版社</option>
 							<option value="2">清华大学出版社</option>
@@ -93,30 +93,30 @@ function res(){
 				</tr>
 				<tr>
 					<td>价格:</td>
-					<td><input type="text" name="price">￥</td>
+					<td><input type="text" name="price" id="price" onKeyPress="checkIsFloat()">￥</td>
 				</tr>
 				<tr>
 					<td>库存量:</td>
-					<td><input type="text">(本/套)</td>
+					<td><input type="text" name="count" id="count">(本/套)</td>
 				</tr>
 				<tr>
 					<td>图书封面:</td>
 					<td>
-					<input name="pic" type="file" size="18" onChange="changPic(this)">
+					<input name="pic" id="pic" type="file" size="18" onChange="changPic(this)">
 					</td>
 				</tr>
 				<tr>
 					<td>图书简介:</td>
-					<td><input type="text"></td>
+					<td><input type="text" name="description" id="description"></td>
 				</tr>
 			</table>
 		</td>
 	</tr>
 	<tr>
 		<td colspan="2" align="center">
-			<button onClick="ret()" style="width:20%">返回</button>&nbsp;
-			<button onClick="res()" style="width:20%">重置</button>&nbsp;
-			<button onClick="sub()" style="width:20%">提交</button>
+			<button  type="button" onClick="ret()" style="width:20%">返回</button>&nbsp;	<!-- 必须写type="button"，否则会自动提交 -->
+			<button  type="button" onClick="res()" style="width:20%">重置</button>&nbsp;
+			<button  type="button" onClick="sub()" style="width:20%">提交</button>
 		</td>
 	</tr>
 </table>
