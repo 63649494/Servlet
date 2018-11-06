@@ -11,7 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.db.DBOper;
+import com.db.UserDao;
+import com.entity.User;
 
 /**
  * Servlet implementation class AddUserServlet
@@ -51,25 +52,25 @@ public class AddUserServlet extends HttpServlet {
 		//格式化当前时间
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		String regtime = dateFormat.format(curTime);
+		//封装
+		User user = new User();
+		user.setUsername(username);
+		user.setUserpass(userpass);
+		user.setRole(Integer.parseInt(role));
+		user.setRegtime(regtime);
 		ServletContext ctx = this.getServletContext();
 		//通过ServletContext获取web.xml中设置的初始化参数
 		String server = ctx.getInitParameter("server");//获取服务器地址
 		String dbname = ctx.getInitParameter("dbname");//获取数据库名
-		String user = ctx.getInitParameter("user");//获取数据库登录名
+		String dbuser = ctx.getInitParameter("user");//获取数据库登录名
 		String pwd = ctx.getInitParameter("pwd");//获取数据库密码
-		DBOper db = new DBOper();
+		UserDao dao = new UserDao();
 		try {
 				//连接数据库
 			out.println("<br>这是注册结果页面desu");
-			db.getConn(server,dbname,user,pwd);
+			dao.getConn(server,dbname,dbuser,pwd);
 			//向userdetail插入一条记录
-			String sql = "INSERT INTO userdetail(username,userpass,role,regtime) values(?,?,?,?)";
-			
-			//执行插入操作，username和userpass放入数组当参数
-			out.println("<br>username="+username+" userpass="+userpass+" regtime="+regtime);
-			int rs = db.executeUpdate(sql, new String[]{username,userpass,role,regtime});
-			out.println("<br>"+rs+"是当前rs值\n");
-			if(rs>0){//插入成功
+			if(dao.addUser(user)){//插入成功
 					out.println("<br>添加成功");
 					out.println("<br><a href='adminLogin.jsp'>请登录</a>");
 			}else{

@@ -80,4 +80,34 @@
     <servlet-name>AdminLoginServlet</servlet-name>
     <url-pattern>/AdminLoginServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BookDao</display-name>
+    <servlet-name>BookDao</servlet-name>
+    <servlet-class>com.db.BookDao</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BookDao</servlet-name>
+    <url-pattern>/BookDao</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddBookServlet</display-name>
+    <servlet-name>AddBookServlet</servlet-name>
+    <servlet-class>com.servlat.admin.AddBookServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddBookServlet</servlet-name>
+    <url-pattern>/admin/AddBookServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SearchBookServlet</display-name>
+    <servlet-name>SearchBookServlet</servlet-name>
+    <servlet-class>com.servlat.SearchBookServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchBookServlet</servlet-name>
+    <url-pattern>/SearchBookServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
