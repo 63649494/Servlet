@@ -9,7 +9,7 @@ public class Book implements Serializable{
 	private double price;
 	private int count;
 	private String pic;
-	private String desciption;
+	private String description;
 	public String getBookName() {
 		return bookName;
 	}
@@ -46,11 +46,11 @@ public class Book implements Serializable{
 	public void setPic(String pic) {
 		this.pic = pic;
 	}
-	public String getDesciption() {
-		return desciption;
+	public String getDescription() {
+		return description;
 	}
-	public void setDesciption(String desciption) {
-		this.desciption = desciption;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 }

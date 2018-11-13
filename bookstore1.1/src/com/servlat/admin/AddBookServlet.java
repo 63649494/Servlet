@@ -52,7 +52,7 @@ public class AddBookServlet extends HttpServlet {
 		//截取字符串
 		String picName = pic.substring(pic.lastIndexOf("\\")+1);//用于去除路径，只留图片名
 		book.setPic(picName);
-		book.setDesciption(description);
+		book.setDescription(description);
 		//将图书插入到数据库中
 		ServletContext ctx = this.getServletContext();
 		String server = ctx.getInitParameter("server");//获取服务器地址

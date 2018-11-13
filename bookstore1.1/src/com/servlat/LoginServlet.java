@@ -67,7 +67,7 @@ public class LoginServlet extends HttpServlet {
 				cookie.setMaxAge(60*60*24*30);
 				response.addCookie(cookie);
 				//跳转到MainServlet
-				RequestDispatcher dispatcher = request.getRequestDispatcher("top.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("main.jsp");
 				dispatcher.forward(request, response);
 			}else{//不合法用户
 				out.println("login in false");

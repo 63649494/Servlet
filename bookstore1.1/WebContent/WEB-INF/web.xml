@@ -110,4 +110,24 @@
     <servlet-name>SearchBookServlet</servlet-name>
     <url-pattern>/SearchBookServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>aaa</display-name>
+    <servlet-name>aaa</servlet-name>
+    <servlet-class>com.db.aaa</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>aaa</servlet-name>
+    <url-pattern>/aaa</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BuyServlet</display-name>
+    <servlet-name>BuyServlet</servlet-name>
+    <servlet-class>com.servlat.BuyServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BuyServlet</servlet-name>
+    <url-pattern>/BuyServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

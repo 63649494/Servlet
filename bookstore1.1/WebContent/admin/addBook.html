@@ -15,8 +15,8 @@ function changPic(obj){
 		document.getElementById("showPic").src=filename;
 	}
 }
-function ret(){		//这里不懂
-	window.parent.frmMain.location="bookManage.jsp"
+function ret(){		//返回上一页
+	window.location.href="bookManage.jsp";
 }
 function sub(){
 	if(document.form1.isbn.value==""){

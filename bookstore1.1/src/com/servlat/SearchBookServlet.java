@@ -32,6 +32,10 @@ public class SearchBookServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("GBK");
 		response.setContentType("text/html;charset=gbk");
+		//书
+		String bookname = request.getParameter("bookName");
+		String pid = request.getParameter("publisher");
+		//数据库
 		ServletContext ctx = this.getServletContext();
 		String server = ctx.getInitParameter("server");//获取服务器地址
 		String dbname = ctx.getInitParameter("dbname");//获取数据库名
@@ -41,11 +45,22 @@ public class SearchBookServlet extends HttpServlet {
 		List<Book> booklist = null;
 		try{
 			dao.getConn(server, dbname, user, pwd);
+			if(bookname!=null&&bookname.length()>0&&(pid==null||pid.equals(""))){
+				//根据书名查
+				booklist=dao.getBookByName(bookname);
+			}else if(pid!=null&&pid.length()>0&&(bookname==null||bookname.equals(""))){
+				//根据出版社查
+				booklist=dao.getBookByPublisher(Integer.parseInt(pid));
+			}else if(pid!=null&&pid.length()>0&&bookname!=null&&bookname.length()>0){
+				booklist=dao.getBookByNameAndPubliser(bookname,Integer.parseInt(pid));
+			}else{//返回所有图书列表
 			booklist = dao.getAllBook();
+			}
 		}catch(Exception e){
 			e.printStackTrace();
 		}
 		if(booklist!=null){
+			//将图书列表保存到请求对象中
 			request.setAttribute("bookList", booklist);
 		}
 		request.getRequestDispatcher("booklist.jsp").forward(request, response); //将请求转发到booklist.jsp这个页面

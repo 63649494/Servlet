@@ -1,22 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=GBK"%>
 <%@ page import="com.entity.Book" %>
 <%@ page import="java.util.List" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>booklist</title>
+<script type="text/javascript">
+	function showShop(){
+		window.parent.frmMain.location = "cart.jsp";
+	}
+	function select(){
+		document.search.submit();
+	}
+</script>
 </head>
 <body>
-<%
-	List<Book> bookList = (List<Book>)request.getAttribute("bookList");
-	if(bookList==null){
-	//Èç¹ûbooklistÎª¿Õ¾ÍÌø×ªµ½SBS´¦Àí
-%>
-	<jsp:forword page="SeachBookServlet">
-<%
-	}
-%>
+<c:if test="${bookList==null}">
+	<jsp:forward page="SearchBookServlet"></jsp:forward>
+</c:if>
 <table>
 	<tr>
 		<td>
@@ -29,6 +32,8 @@
 	</tr>
 	<tr>
 		<td>
+		
+		<form method="post" name="search" action="SearchBookServlet">
 			<table>
 				<tr>
 					<td>&nbsp;Í¼ÊéÃû³Æ</td>
@@ -45,10 +50,69 @@
 						</select>
 					</td>
 					<td>
-						&nbsp;<botton onClick="select()" id="btnSearch" name="btnSearch">²éÑ¯</botton>
+						&nbsp;<button onClick="select()" id="btnSearch" name="btnSearch">²éÑ¯</button>
 					</td>
 				</tr>
 			</table>
+			</form>
+			
+			
+			
+			<table>
+				<tr>
+					<td>Í¼ÊéÁÐ±í</td>
+				</tr>
+			</table>
+			<div style="position:absolute;lef:0px;bottom:1px;z-index:1000;">
+			<table>
+				<tr>
+					<td>
+					<button onClick="showShop()" id="btnSave" name="btnSave">²é¿´¹ºÎï³µ</button>
+					</td>
+				</tr>
+			</table>
+			</div>
+			<div class="list_div">
+				<table>
+					<thead>
+						<tr>
+							<th><span>ÐòºÅ</span></th>
+							<th><span>ÊéÃû</span></th>
+							<th><span>³ö°æÉç</span></th>
+							<th><span>ISBN</span></th>
+							<th><span>¼Û¸ñ</span></th>
+							<th><span>²Ù×÷</span></th>
+						</tr>
+					</thead>
+					<tbody><!-- Ò»¿ªÊ¼²»ÏÔÊ¾Êý¾ÝÊÇÒòÎªjavabeanÖÐµÄÒ»¸öÔªËØÃû×ÖÆ´´íÁË -->
+						<!-- Ê¹ÓÃJSP½Å±¾Ñ­»·ÏÔÊ¾ -->
+						<c:forEach var="book" items="${bookList}" varStatus="status">
+						<tr>
+							<td>${status.count}</td>
+							<td>${book.bookName }</td>
+							<td>
+								<c:choose>
+									<c:when test="${book.publisherID==1 }">
+									ÈËÃñ³ö°æÉç</c:when>
+									<c:when test="${book.publisherID==2 }">
+									Çå»ª´óÑ§³ö°æÉç</c:when>
+									<c:when test="${book.publisherID==3 }">
+									µç×Ó¹¤Òµ³ö°æÉç</c:when>
+								</c:choose>
+							</td>
+							<td>${book.isbn}</td>
+							<td>${book.price}</td>
+							<td>
+								<a href="book.jsp?isbn=${book.isbn}">²é¿´ÏêÇé</a>
+								<a href="BuyServlet?isbn=${book.isbn}">
+									<img src="./images/buy.gif" width="40" height="17" style="border:0px"/>
+								</a>
+							</td>
+						</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
 		</td>
 	</tr>
 </table>

@@ -21,7 +21,7 @@ public class BookDao extends DBOper{
 			book.setPrice(rs.getDouble("price"));
 			book.setCount(rs.getInt("count"));
 			book.setPic(rs.getString("pic"));
-			book.setDesciption(rs.getString("desciption"));
+			book.setDescription(rs.getString("description"));	//javabean很重要 创建时仔细，否则一错千错
 			bookList.add(book);
 			}
 			}catch(SQLException e){
@@ -45,7 +45,7 @@ public class BookDao extends DBOper{
 				book.setPrice(rs.getDouble("price"));
 				book.setCount(rs.getInt("count"));
 				book.setPic(rs.getString("pic"));
-				book.setDesciption(rs.getString("desciption"));
+				book.setDescription(rs.getString("description"));
 				}
 				}catch(SQLException e){
 					e.printStackTrace();
@@ -68,7 +68,7 @@ public class BookDao extends DBOper{
 			book.setPrice(rs.getDouble("price"));
 			book.setCount(rs.getInt("count"));
 			book.setPic(rs.getString("pic"));
-			book.setDesciption(rs.getString("desciption"));
+			book.setDescription(rs.getString("description"));
 			bookList.add(book);
 			}
 			}catch(SQLException e){
@@ -92,7 +92,7 @@ public class BookDao extends DBOper{
 			book.setPrice(rs.getDouble("price"));
 			book.setCount(rs.getInt("count"));
 			book.setPic(rs.getString("pic"));
-			book.setDesciption(rs.getString("desciption"));
+			book.setDescription(rs.getString("description"));
 			bookList.add(book);
 			}
 			}catch(SQLException e){
@@ -116,7 +116,7 @@ public class BookDao extends DBOper{
 			book.setPrice(rs.getDouble("price"));
 			book.setCount(rs.getInt("count"));
 			book.setPic(rs.getString("pic"));
-			book.setDesciption(rs.getString("desciption"));
+			book.setDescription(rs.getString("description"));
 			bookList.add(book);
 			}
 			}catch(SQLException e){
@@ -131,7 +131,7 @@ public class BookDao extends DBOper{
 		boolean r = false;
 		try{
 			String sql = "INSERT INTO books(isbn,bookName,publisherID,price,count,pic,description) VALUES(?,?,?,?,?,?,?)";
-			int rs = this.executeUpdate(sql, new String[]{book.getIsbn(),book.getBookName(),""+book.getPublisherID(),""+book.getPrice(),""+book.getCount(),book.getPic(),book.getDesciption()});
+			int rs = this.executeUpdate(sql, new String[]{book.getIsbn(),book.getBookName(),""+book.getPublisherID(),""+book.getPrice(),""+book.getCount(),book.getPic(),book.getDescription()});
 			if(rs>0){
 				//插入成功
 				r = true;
@@ -148,7 +148,7 @@ public class BookDao extends DBOper{
 		boolean r = false;
 		try{
 			String sql = "UPDATE books SET bookNam?,publisherID=?,price=?,count=?,pic=?,description=? WHERE isbn=?";
-			int rs = this.executeUpdate(sql, new String[]{book.getBookName(),""+book.getPublisherID(),""+book.getPrice(),""+book.getCount(),book.getPic(),book.getDesciption(),book.getIsbn()});
+			int rs = this.executeUpdate(sql, new String[]{book.getBookName(),""+book.getPublisherID(),""+book.getPrice(),""+book.getCount(),book.getPic(),book.getDescription(),book.getIsbn()});
 			if(rs>0){
 				//修改成功
 				r = true;
