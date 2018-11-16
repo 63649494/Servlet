@@ -5,8 +5,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>ÄãµÄ¹ºÎï³µ</title>
-<script type="javascript">
-	function goOn(){}
+<script type="text/javascript">
+	function goOn(){
+		window.location.href="./booklist.jsp";
+	}
 	function ret(){}
 </script>
 </head>
@@ -19,12 +21,12 @@
 					<td>ÎÒµÄ¹ºÎï³µ</td>
 				</tr>
 			</table>
-			<div>
+			<div style="position:absolute;left:0px;bottom:1px;z-index:1000;">	<!-- °´Å¥ -->
 			<table>
 				<tr>
 					<td>
-						<button onClick="ret()">·ÅÆú¹ºÎï</button>&nbsp;
-						<button onClick="goOn()">¼ÌÐø¹ºÎï</button>
+						<button type="button" onClick="ret()">·ÅÆú¹ºÎï</button>&nbsp;
+						<button type="button" onClick="goOn()">¼ÌÐø¹ºÎï</button>
 					</td>
 				</tr>
 			</table>
@@ -49,7 +51,7 @@
 							if(cart!=null){
 								for(int i=0;i<cart.size();i++){
 									Book book = cart.get(i);
-									money = money + book.getPrice();
+									money = money + book.getPrice()*book.getCount();	//´Ë´¦ÊéÉÏÓÐ´íÎó
 								
 						%>
 						<tr>

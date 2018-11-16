@@ -67,11 +67,12 @@ public class LoginServlet extends HttpServlet {
 				cookie.setMaxAge(60*60*24*30);
 				response.addCookie(cookie);
 				//跳转到MainServlet
+				//out.println("login success");
 				RequestDispatcher dispatcher = request.getRequestDispatcher("main.jsp");
 				dispatcher.forward(request, response);
 			}else{//不合法用户
 				out.println("login in false");
-				out.println("<br><a href='index.html'>重新登录</a>");
+				out.println("<br><a href='login.jsp'>重新登录</a>");
 			}
 		}catch(ClassNotFoundException e){
 			e.printStackTrace();

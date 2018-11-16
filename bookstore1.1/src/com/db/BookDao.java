@@ -105,7 +105,7 @@ public class BookDao extends DBOper{
 	//根据书名和出版色查找图书
 	public List<Book> getBookByNameAndPubliser(String name,int pid){
 		List<Book> bookList = new ArrayList<Book>();
-		String sql = "SELECT * FROM books WHERE bookName LIKE '%"+name+"%' And publisherID"+pid;
+		String sql = "SELECT * FROM books WHERE bookName LIKE '%"+name+"%' And publisherID="+pid;
 		try{
 			ResultSet rs = this.executeQuery(sql, null);
 			while(rs.next()){
@@ -160,7 +160,7 @@ public class BookDao extends DBOper{
 		}
 		return r;
 	}
-	//删除制定ISBN的图书
+	//删除指定ISBN的图书
 	public boolean delBookByIsbn(String isbn){
 		boolean r = false;
 		try{

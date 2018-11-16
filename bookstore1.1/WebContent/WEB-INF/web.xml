@@ -78,7 +78,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>AdminLoginServlet</servlet-name>
-    <url-pattern>/AdminLoginServlet</url-pattern>
+    <url-pattern>/admin/AdminLoginServlet</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -129,5 +129,15 @@
   <servlet-mapping>
     <servlet-name>BuyServlet</servlet-name>
     <url-pattern>/BuyServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SearchBookAdminServlet</display-name>
+    <servlet-name>SearchBookAdminServlet</servlet-name>
+    <servlet-class>com.servlat.admin.SearchBookAdminServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchBookAdminServlet</servlet-name>
+    <url-pattern>/admin/SearchBookAdminServlet</url-pattern>
   </servlet-mapping>
 </web-app>
