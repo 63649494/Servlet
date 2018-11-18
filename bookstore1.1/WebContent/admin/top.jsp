@@ -10,7 +10,7 @@ String username = (String)session.getAttribute("username");
 String logtime = (String)session.getAttribute("logtime");
 %>
 	<div class="top_header">
-	<img src="./images/banner01.jpg" style="cursor:auto"/>
+	<img src="../images/banner01.jpg" width="80" height="80"  style="cursor:auto"/>
 		<div class="headfont" style="position:absolute;right:1px;top:58px;z-index:1000;">
 		<span>µÇÂ¼Ãû£º<%=username %></span>
 		<span>µÇÂ¼Ê±¼ä£º<%=logtime %></span>

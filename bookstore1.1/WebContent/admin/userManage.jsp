@@ -13,13 +13,16 @@
 	function select(){
 		document.search.submit();
 	}
-	function ckbSelect(sta,flg){
+	function ckbSelect(sta,flag){
 		for(var i=0;i<document.getElementsByName(flag).length;i++){
 			document.getElementsByName(flag)[i].checked = sta;
 		}
 	}
 	function addIt(){
 		window.location.href = "addUser.html";
+	}
+	function delIt(){
+		window.location.href = "DelUserServlet";
 	}
 </script>
 </head>
@@ -41,7 +44,10 @@
 		<form method="post" name="search" action="SearchUserServlet">
 			<table>
 				<tr>
-					<td>&nbsp;图书名称</td>
+					<td>&nbsp;登录名：</td>
+					<td>
+						<input type="text" name="userName">
+					</td>
 					<td>
 						&nbsp;<button onClick="select()" id="btnSearch" name="btnSearch">查询</button>
 					</td>
@@ -61,7 +67,7 @@
 				<tr>
 					<td>
 					<button onClick="addIt()">新增用户</button>
-					<button onClick="deleteIt()">删除</button>
+					<button onClick="delIt()">删除</button>
 					<button onClick="editIt()">修改用户信息</button>
 					</td>
 				</tr>
@@ -89,30 +95,29 @@
 								String user = ctx.getInitParameter("user");//获取数据库登录名
 								String pwd = ctx.getInitParameter("pwd");//获取数据库密码
 								UserDao dao = new UserDao();
+								try{
+									dao.getConn(server, dbname, user, pwd);
+									List<User> list = dao.getAllUser();
+									pageContext.setAttribute("userList", list);
+								}catch(ClassNotFoundException e){
+									e.printStackTrace();	
+								}catch(Exception e){
+									e.printStackTrace();
+								}
 							}
 						%>
-					
 						<!-- 使用JSP脚本循环显示 -->
-						<c:forEach var="book" items="${bookList}" varStatus="status">
+						<c:forEach var="user" items="${userList}" varStatus="status">
 						<tr>
 							<td>
-							<input type="checkbox" name="userId" value="${book.isbn }" calss="input_radio">
+							<input type="checkbox" name="userId" value="${user.username }" calss="input_radio">
 							</td>
 							<td>${status.count}</td>
-							<td>${book.bookName }</td>
-							<td>
-								<c:choose>
-									<c:when test="${book.publisherID==1 }">
-									人民出版社</c:when>
-									<c:when test="${book.publisherID==2 }">
-									清华大学出版社</c:when>
-									<c:when test="${book.publisherID==3 }">
-									电子工业出版社</c:when>
-								</c:choose>
-							</td>
-							<td>${book.isbn}</td>
-							<td>${book.price}</td>
-							<td>${book.count}</td>
+							<td>${user.username }</td>
+							<td>${user.userpass }</td>
+							<td>${(user.role==0)?"普通用户":"管理员"}</td>
+							<td>${user.regtime}</td>
+							<td>${user.lognum}</td>
 						</tr>
 						</c:forEach>
 					</tbody>

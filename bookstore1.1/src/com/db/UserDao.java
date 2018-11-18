@@ -85,7 +85,7 @@ public class UserDao extends DBOper{
 			return r;
 		}
 		//删除指定用户
-		public boolean editUser(String name){
+		public boolean delUser(String name){
 			boolean r= false;
 			try{
 				String sql = "DELETE FROM userdetail WHERE username=?";

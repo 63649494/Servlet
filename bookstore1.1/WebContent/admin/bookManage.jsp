@@ -12,7 +12,7 @@
 	function select(){
 		document.search.submit();
 	}
-	function ckbSelect(sta,flg){
+	function ckbSelect(sta,flag){
 		for(var i=0;i<document.getElementsByName(flag).length;i++){
 			document.getElementsByName(flag)[i].checked = sta;
 		}
@@ -84,7 +84,7 @@
 				<table>
 					<thead>
 						<tr>
-							<th><input type="checkbox" name="checkAll" onClick="onclick=ckbSelect(this.checked,'userId')"></th>
+							<th><input type="checkbox" name="checkAll" onClick="onClick=ckbSelect(this.checked,'userId')"></th>
 							<th><span>序号</span></th>
 							<th><span>书名</span></th>
 							<th><span>出版社</span></th>
@@ -105,7 +105,7 @@
 							<td>
 								<c:choose>
 									<c:when test="${book.publisherID==1 }">
-									人民出版社</c:when>
+									人民邮电出版社</c:when>
 									<c:when test="${book.publisherID==2 }">
 									清华大学出版社</c:when>
 									<c:when test="${book.publisherID==3 }">

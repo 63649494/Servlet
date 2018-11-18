@@ -7,7 +7,7 @@
 	<frame src="top.jsp" name="topFrame" scrolling="no" noresize="noresize" id="topFrame" title="topFrame"/>
 	<frameset cols="165,*" franmeborder="no" border="0" framespacing="0">
 		<frame src="leftTree.htm" name="frmLeft" scrolling="no" noresize="noresize" id="frmLeft" title="frmLeft"/>
-		<frame src="addUser.html" name="frmMain" id="frmMain" title="frmMain"/>
+		<frame src="userManage.jsp" name="frmMain" id="frmMain" title="frmMain"/>
 </frameset>
 <body>
 </body>

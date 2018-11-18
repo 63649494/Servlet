@@ -140,4 +140,24 @@
     <servlet-name>SearchBookAdminServlet</servlet-name>
     <url-pattern>/admin/SearchBookAdminServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SearchUserServlet</display-name>
+    <servlet-name>SearchUserServlet</servlet-name>
+    <servlet-class>com.servlat.admin.SearchUserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchUserServlet</servlet-name>
+    <url-pattern>/admin/SearchUserServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DelUserServlet</display-name>
+    <servlet-name>DelUserServlet</servlet-name>
+    <servlet-class>com.servlat.admin.DelUserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DelUserServlet</servlet-name>
+    <url-pattern>/DelUserServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
