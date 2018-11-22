@@ -160,4 +160,20 @@
     <servlet-name>DelUserServlet</servlet-name>
     <url-pattern>/DelUserServlet</url-pattern>
   </servlet-mapping>
+  <filter>
+    <display-name>CheckUserFilter</display-name>
+    <filter-name>CheckUserFilter</filter-name>
+    <filter-class>com.filter.CheckUserFilter</filter-class>
+    <init-param>
+      <param-name>loginPage</param-name>
+      <param-value>adminLogin.jsp</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>CheckUserFilter</filter-name>
+    <url-pattern>/admin/*</url-pattern>
+  </filter-mapping>
+  <listener>
+    <listener-class>com.listener.ListenLognum</listener-class>
+  </listener>
 </web-app>
