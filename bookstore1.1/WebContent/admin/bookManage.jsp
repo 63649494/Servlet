@@ -20,6 +20,27 @@
 	function addIt(){
 		window.location.href = "addBook.html";
 	}
+	function editIt(){
+		var allCheck = document.getElementsByName("userId");
+		var num = 0;
+		var isbn="";
+		for(var i=0;i<allCheck.length;i++){
+			if(allCheck[i].checked){
+				num++;
+				isbn=allCheck[i].value;
+			}
+		}
+		if(num==1){
+			window.location.href="editBook.jsp?isbn="+isbn;
+		}else if(num==0){
+			alert("没有选中信息！");
+			return;
+		}else{
+			alert("请只选择一条信息");
+			return;
+		}
+		
+	}
 </script>
 </head>
 <body>

@@ -171,7 +171,7 @@
   </filter>
   <filter-mapping>
     <filter-name>CheckUserFilter</filter-name>
-    <url-pattern>/admin/*</url-pattern>
+    <url-pattern>/META-INF</url-pattern>
   </filter-mapping>
   <listener>
     <listener-class>com.listener.ListenLognum</listener-class>

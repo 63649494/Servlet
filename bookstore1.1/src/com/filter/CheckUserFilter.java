@@ -50,6 +50,7 @@ public class CheckUserFilter implements Filter {
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		// TODO Auto-generated method stub
+		
 		HttpServletRequest req = (HttpServletRequest)request;
 		HttpServletResponse res = (HttpServletResponse)response;
 		//获得请求页面
@@ -57,11 +58,12 @@ public class CheckUserFilter implements Filter {
 		//判断是否已登录
 		HttpSession session = req.getSession(true);
 		if(uri.endsWith(loginPage)||uri.endsWith("AdminLoginServlet")||session.getAttribute("adminuser")!=null){
-		chain.doFilter(req, res);
-		return;
+			chain.doFilter(req, res);
+			return;
 		}else{
 			res.sendRedirect(loginPage);
 		}
+		
 	}
 
 	/**
