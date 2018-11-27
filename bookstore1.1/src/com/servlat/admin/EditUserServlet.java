@@ -2,8 +2,6 @@ package com.servlat.admin;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -15,15 +13,15 @@ import com.db.UserDao;
 import com.entity.User;
 
 /**
- * Servlet implementation class AddUserServlet
+ * Servlet implementation class EditUserServlet
  */
-public class DelUserServlet extends HttpServlet {
+public class EditUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DelUserServlet() {
+    public EditUserServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,7 +31,7 @@ public class DelUserServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doPost(request,response);
+		doPost(request, response);
 	}
 
 	/**
@@ -42,43 +40,42 @@ public class DelUserServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("GBK");
-		response.setContentType("text/html;charset=GBK");
+		response.setContentType("text/html;charset=gbk");
 		PrintWriter out = response.getWriter();
-		String delstr = request.getParameter("del");
-		//用空格代替|
-		String delstr2 = delstr.replace('|', ' ');
-		//去除首尾无效空格
-		delstr2.trim();
-		//对字符串进行切分
-		String del[] = delstr2.split(" ");
+		String username = request.getParameter("userName");
+		String userpass = request.getParameter("userPass");
+		String role = request.getParameter("role");
+		String regtime = request.getParameter("regtime");
+		String lognum = request.getParameter("lognum");
+		//封装
+		User user = new User();
+		user.setUsername(username);
+		user.setUserpass(userpass);
+		user.setRole(Integer.parseInt(role));
+		user.setRegtime(regtime);
+		user.setLognum(Integer.parseInt(lognum));
 		ServletContext ctx = this.getServletContext();
-		//通过ServletContext获取web.xml中设置的初始化参数
 		String server = ctx.getInitParameter("server");//获取服务器地址
 		String dbname = ctx.getInitParameter("dbname");//获取数据库名
 		String dbuser = ctx.getInitParameter("user");//获取数据库登录名
 		String pwd = ctx.getInitParameter("pwd");//获取数据库密码
 		UserDao dao = new UserDao();
-		String flag = "false";
-		try {
-				//连接数据库
-			dao.getConn(server,dbname,dbuser,pwd);
-			//向userdetail删除记录
-			if(del.length>0){
-				for(String name:del){
-					dao.delUser(name);//删除成功
-				}
-				flag = "true";
+		try{
+			//连接数据库
+			dao.getConn(server, dbname, dbuser, pwd);
+			boolean r = dao.editUser(user);
+			if(r){
+				response.sendRedirect("userManage.jsp");
+			}else {
+				out.println("失败！");
+				out.println("<br><a href='userManage.jsp'>返回</a>");
 			}
+			
+		}catch(ClassNotFoundException e){
+			e.printStackTrace();
 		}catch(Exception e){
 			e.printStackTrace();
-			out.println("<br>出错了E");
-		}finally{
-			dao.closeAll();
-			}
-		out.println(flag);
-		out.flush();
-		out.close();
 		}
 	}
-
+}
 

@@ -72,8 +72,8 @@ public class UserDao extends DBOper{
 		public boolean editUser(User user){
 			boolean r= false;
 			try{
-				String sql = "UPDATE userdetail SET userpass=?,role=?,regtime=? WHERE username=?";
-				int rs = this.executeUpdate(sql, new String[] {user.getUserpass(),""+user.getRole(),user.getRegtime(),user.getUsername()});
+				String sql = "UPDATE userdetail SET userpass=?,role=?,regtime=?,lognum=? WHERE username=?";
+				int rs = this.executeUpdate(sql, new String[] {user.getUserpass(),""+user.getRole(),user.getRegtime(),""+user.getLognum(),user.getUsername()});
 			if(rs>0){
 				r=true;
 			}

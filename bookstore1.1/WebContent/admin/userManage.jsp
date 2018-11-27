@@ -21,8 +21,89 @@
 	function addIt(){
 		window.location.href = "addUser.html";
 	}
-	function delIt(){
-		window.location.href = "DelUserServlet";
+
+	function editIt(){
+		var allCheck = document.getElementsByName("userId");
+		var num = 0;
+		var userName="";
+		for(var i=0;i<allCheck.length;i++){
+			if(allCheck[i].checked){
+				num++;
+				userName=allCheck[i].value;
+			}
+		}
+		if(num==1){
+			window.location.href="editUser.jsp?userName="+userName;
+		}else if(num==0){
+			alert("没有选中信息！");
+			return;
+		}else{
+			alert("请只选择一条信息");
+			return;
+		}
+		
+	}
+	
+	
+	var xmlHttp;	//用于存放XMLHttpRequest对象
+	//创建
+	function createXMLHttpRequest(){
+		if(window.ActiceXObject){
+			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+		}else if(window.XMLHttpRequest){
+			xmlHttp = new XMLHttpRequest();
+		}
+	}
+	
+	//通过ajax异步删除
+	function deleteIt(){
+		var allCheck = document.getElementsByName("userId");
+		var num = 0;
+		var delstr="";
+		for(var i=0;i<allCheck.length;i++){
+			if(allCheck[i].checked){
+				num++;
+				delstr+=allCheck[i].value+"|";
+			}
+		}
+		if(num > 0){
+			if(window.confirm("您确定要删除所选的吗？")){
+				//调用createxml方法
+				createXMLHttpRequest();
+				//绑定状态触发器
+				xmlHttp.onreadystatechange = processor;
+				//通过get方法提交
+				xmlHttp.open("GET","DelUserServlet?del="+delstr);
+				xmlHttp.send(null);
+			}
+		}else{
+			alert("没有选中信息！");
+			return;
+		}
+	}
+	
+	//处理从服务器返回的信息
+	function processor(){
+		if(xmlHttp.readyState == 4){//响应完成
+			if(xmlHttp.status == 200){//返回成功
+				//取出服务器返回的相应文本信息
+				var flag = xmlHttp.responseText;
+				if(flag.indexOf("true")!=-1){
+					//删除页面信息不刷新
+					var allCheck = document.getElementsByName("userId");
+					for(var i=0;i<allCheck.length;i++){
+						if(allCheck[i].checked){
+							var chTr = allCheck[i].parentNode.parentNode;
+							chTr.removeNode(true);
+							i--;
+						}
+					}
+				}else{
+					alert("删除失败！");
+				}
+			}
+			
+		}
 	}
 </script>
 </head>
@@ -67,7 +148,7 @@
 				<tr>
 					<td>
 					<button onClick="addIt()">新增用户</button>
-					<button onClick="delIt()">删除</button>
+					<button onClick="deleteIt()">删除</button>
 					<button onClick="editIt()">修改用户信息</button>
 					</td>
 				</tr>

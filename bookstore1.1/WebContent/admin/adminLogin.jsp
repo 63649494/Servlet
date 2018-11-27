@@ -84,8 +84,7 @@
 			}
 	}
 %>				
-				
-				
+
 				<table>	 
 					<tr> 
 						<td width="66" height="20" class="login_td">µÇÂ¼Ãû£º</td> 

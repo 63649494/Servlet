@@ -20,9 +20,6 @@ public class CheckUserFilter implements Filter {
     /**
      * Default constructor. 
      */
-    public CheckUserFilter() {
-        // TODO Auto-generated constructor stub
-    }
     
     private FilterConfig filterConfig;
     //登录界面，用户没登录时，将会首先转到这个页面
@@ -57,7 +54,7 @@ public class CheckUserFilter implements Filter {
 		String uri = req.getRequestURI();
 		//判断是否已登录
 		HttpSession session = req.getSession(true);
-		if(uri.endsWith(loginPage)||uri.endsWith("AdminLoginServlet")||session.getAttribute("adminuser")!=null){
+		if(uri.endsWith(loginPage)||uri.endsWith("AdminLoginServlet")||session.getAttribute("username")!=null){//"username"一开始写的adminuser，然后就一直登陆不进去
 			chain.doFilter(req, res);
 			return;
 		}else{

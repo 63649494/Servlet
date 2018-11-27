@@ -2,8 +2,6 @@ package com.servlat.admin;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -11,19 +9,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.db.UserDao;
-import com.entity.User;
+import com.db.BookDao;
+import com.entity.Book;
 
 /**
- * Servlet implementation class AddUserServlet
+ * Servlet implementation class EditBookServlet
  */
-public class DelUserServlet extends HttpServlet {
+public class EditBookServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DelUserServlet() {
+    public EditBookServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,7 +31,7 @@ public class DelUserServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doPost(request,response);
+		doPost(request, response);
 	}
 
 	/**
@@ -42,43 +40,52 @@ public class DelUserServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("GBK");
-		response.setContentType("text/html;charset=GBK");
+		response.setContentType("text/html;charset=gbk");
 		PrintWriter out = response.getWriter();
-		String delstr = request.getParameter("del");
-		//用空格代替|
-		String delstr2 = delstr.replace('|', ' ');
-		//去除首尾无效空格
-		delstr2.trim();
-		//对字符串进行切分
-		String del[] = delstr2.split(" ");
+		String bookname = request.getParameter("bookName");
+		String isbn = request.getParameter("isbn");
+		String publisherID = request.getParameter("publisher");
+		String price = request.getParameter("price");
+		String count = request.getParameter("count");
+		String pic = request.getParameter("pic");
+		String description = request.getParameter("description");
+		//封装
+		Book book = new Book();
+		book.setBookName(bookname);
+		book.setIsbn(isbn);
+		book.setPublisherID(Integer.parseInt(publisherID));
+		book.setPrice(Double.parseDouble(price));
+		if(count!=null&&!count.equals("")){
+			book.setCount(Integer.parseInt(count));
+		}
+		//截取字符串
+		String picName = pic.substring(pic.lastIndexOf("\\")+1);//用于去除路径，只留图片名
+		book.setPic(picName);
+		book.setDescription(description);
+		//将图书插入到数据库中
 		ServletContext ctx = this.getServletContext();
-		//通过ServletContext获取web.xml中设置的初始化参数
 		String server = ctx.getInitParameter("server");//获取服务器地址
 		String dbname = ctx.getInitParameter("dbname");//获取数据库名
 		String dbuser = ctx.getInitParameter("user");//获取数据库登录名
 		String pwd = ctx.getInitParameter("pwd");//获取数据库密码
-		UserDao dao = new UserDao();
-		String flag = "false";
-		try {
-				//连接数据库
-			dao.getConn(server,dbname,dbuser,pwd);
-			//向userdetail删除记录
-			if(del.length>0){
-				for(String name:del){
-					dao.delUser(name);//删除成功
-				}
-				flag = "true";
+		BookDao dao = new BookDao();
+		try{
+			//连接数据库
+			dao.getConn(server, dbname, dbuser, pwd);
+			boolean r = dao.editBook(book);
+			if(r){
+				response.sendRedirect("bookManage.jsp");
+			}else {
+				out.println("失败！");
+				out.println("<br><a href='bookManage.jsp'>返回</a>");
 			}
+			
+		}catch(ClassNotFoundException e){
+			e.printStackTrace();
 		}catch(Exception e){
 			e.printStackTrace();
-			out.println("<br>出错了E");
-		}finally{
-			dao.closeAll();
-			}
-		out.println(flag);
-		out.flush();
-		out.close();
 		}
 	}
 
+}
 

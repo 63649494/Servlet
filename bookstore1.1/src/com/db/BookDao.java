@@ -147,7 +147,7 @@ public class BookDao extends DBOper{
 	public boolean editBook(Book book){
 		boolean r = false;
 		try{
-			String sql = "UPDATE books SET bookNam?,publisherID=?,price=?,count=?,pic=?,description=? WHERE isbn=?";
+			String sql = "UPDATE books SET bookName=?,publisherID=?,price=?,count=?,pic=?,description=? WHERE isbn=?";
 			int rs = this.executeUpdate(sql, new String[]{book.getBookName(),""+book.getPublisherID(),""+book.getPrice(),""+book.getCount(),book.getPic(),book.getDescription(),book.getIsbn()});
 			if(rs>0){
 				//修改成功

@@ -44,7 +44,7 @@ public class ListenLognum implements HttpSessionAttributeListener {
     			db.getConn(server, dbname, user, pwd);
     			//查询用户
     			String username = hsbe.getValue().toString();
-    			String sql="UPDATE userdetail SET lognum=lognum+1 WHERE username="+username+"";
+    			String sql="UPDATE userdetail SET lognum=lognum+1 WHERE username="+username;//null+1=null
     			db.executeUpdate(sql, null);
     		}catch(ClassNotFoundException e){
     			e.printStackTrace();

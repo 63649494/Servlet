@@ -15,11 +15,12 @@ function changPic(obj){
 	}else{
 		document.getElementById("showPic").src=filename;
 	}
+}
 
 function ret(){
 	window.location.href="bookManage.jsp";
 }
-
+	
 function sub(){
 	document.form1.submit();
 }
@@ -47,7 +48,6 @@ function checkIsFloat(){
 
 function res(){
 	document.getElementById("bookName").value="";
-	document.getElementById("isbn").value="";
 	document.getElementById("publisher").value="";
 	document.getElementById("price").value="";
 	document.getElementById("count").value="";
@@ -56,7 +56,7 @@ function res(){
 	document.getElementById("description").value="";
 	
 }
-}
+
 
 </script>
 <title>网上书店后台管理系统</title>
@@ -82,7 +82,7 @@ function res(){
 
 %>
 
-<form method="post" name=form1" action="EditBookServlet">
+<form method="post" name="form1" action="EditBookServlet">
 <table align="center">
 			<tr>
 		<td>修改图书信息</td>
