@@ -41,6 +41,110 @@
 		}
 		
 	}
+	
+	var xmlHttp;	//用于存放XMLHttpRequest对象
+	//创建
+	function createXMLHttpRequest(){
+		if(window.ActiceXObject){
+			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+		}else if(window.XMLHttpRequest){
+			xmlHttp = new XMLHttpRequest();
+		}
+	}
+	
+	//通过ajax异步删除
+	function deleteIt(){
+		var allCheck = document.getElementsByName("userId");
+		var num = 0;
+		var delstr="";
+		for(var i=0;i<allCheck.length;i++){
+			if(allCheck[i].checked){
+				num++;
+				delstr+=allCheck[i].value+"|";
+			}
+		}
+		if(num > 0){
+			if(window.confirm("您确定要删除所选的吗？")){
+				//调用createxml方法
+				createXMLHttpRequest();
+				//绑定状态触发器
+				xmlHttp.onreadystatechange = processor;
+				//通过get方法提交
+				xmlHttp.open("GET","DelBookServlet?del="+delstr);
+				xmlHttp.send(null);
+			}
+		}else{
+			alert("没有选中信息！");
+			return;
+		}
+	}
+	
+	//处理从服务器返回的信息
+	function processor(){
+		if(xmlHttp.readyState == 4){//响应完成
+			if(xmlHttp.status == 200){//返回成功
+				//取出服务器返回的相应文本信息
+				var flag = xmlHttp.responseText;
+				if(flag.indexOf("true")!=-1){
+					//删除页面信息不刷新
+					var allCheck = document.getElementsByName("userId");
+					for(var i=0;i<allCheck.length;i++){
+						if(allCheck[i].checked){
+							var chTr = allCheck[i].parentNode.parentNode;
+							chTr.removeNode(true);
+							i--;
+						}
+					}
+				}else{
+					alert("删除失败！");
+				}
+			}
+			
+		}
+	}
+	
+	var x,y;
+	//显示图书工具
+	function showBook(isbn){
+		//定位鼠标位置
+		x = event.clientX;
+		y = event.clientY;
+		createXMLHttpRequest();
+		xmlHttp.onreadystatechange = bookTip;
+		xmlHttp.open("GET","ShowBookServlet?isbn="+isbn);
+		xmlHttp.send(null);
+	}
+	
+	function bookTip(){
+		var book;
+		if(xmlHttp.readyState == 4){
+			if(xmlHttp.status == 200){
+				//去除服务器返回的json字符转换为json对象
+				//alert(xmlHttp.responseText);
+				book = eval(+xmlHttp.responseText);
+				//显示名为tip的div层，该层显示工具提示信息
+				document.all.bookTip.style.display = "block";
+				document.all.bookTip.style.top = y;
+				document.all.bookTip.style.left = x+10;
+				document.all.showPic.src = "../images/bookcovers/"+book.pic;
+				document.all.tipTable.rows[0].cells[1].innerHTML = book.bookName;
+				document.all.tipTable.rows[1].cells[1].innerHTML = book.bookisbn;
+				if(book.publisherID == 1){
+					document.all.tipTable.rows[2].cells[1].innerHTML = "人民邮电出版社";
+				}else if(book.publisherID == 2){
+					document.all.tipTable.rows[2].cells[1].innerHTML = "清华大学出版社";
+				}else if(book.publisherID == 3){
+					document.all.tipTable.rows[2].cells[1].innerHTML = "电子工业出版社";
+				}
+				document.all.tipTable.rows[3].cells[1].innerHTML = "￥" + book.price;
+				document.all.tipTable.rows[4].cells[1].innerHTML = book.count + "(本/套)";
+				document.all.tipTable.rows[5].cells[1].innerHTML = book.description;
+			}
+		}
+	}
+	function hiddenBook(){
+		document.all.bookTip.style.display = "none";
+	}
 </script>
 </head>
 <body>
@@ -122,7 +226,7 @@
 							<input type="checkbox" name="userId" value="${book.isbn }" calss="input_radio">
 							</td>
 							<td>${status.count}</td>
-							<td>${book.bookName }</td>
+							<td onmousemove=showBook(${book.isbn }) onmouseout=hiddenBook() >${book.bookName }</td>
 							<td>
 								<c:choose>
 									<c:when test="${book.publisherID==1 }">
@@ -144,5 +248,45 @@
 		</td>
 	</tr>
 </table>
+
+<div id="bookTip" style="position:absolute;border:1px;border-style:solid;">
+	<table bgcolor="#ffffee">
+		<tr>
+			<td>
+				<img height=260 alt="" src="" width=202 style="cursor:pointer" id="showPic">
+			</td>
+			
+			<td>
+			<table>
+				<tr>
+					<td>图书名称:</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>ISBN:</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>出版社:</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>价格:</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>库存量:</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>图书简介:</td>
+					<td></td>
+				</tr>
+			</table>
+			</td>
+		</tr>
+	</table>
+</div>
+
 </body>
 </html>

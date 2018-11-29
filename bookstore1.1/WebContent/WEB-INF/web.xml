@@ -186,4 +186,24 @@
     <servlet-name>EditUserServlet</servlet-name>
     <url-pattern>/admin/EditUserServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DelBookServlet</display-name>
+    <servlet-name>DelBookServlet</servlet-name>
+    <servlet-class>com.servlat.admin.DelBookServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DelBookServlet</servlet-name>
+    <url-pattern>/admin/DelBookServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ShowBookServlet</display-name>
+    <servlet-name>ShowBookServlet</servlet-name>
+    <servlet-class>com.servlat.admin.ShowBookServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowBookServlet</servlet-name>
+    <url-pattern>/admin/ShowBookServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

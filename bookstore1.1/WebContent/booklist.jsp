@@ -93,7 +93,7 @@
 							<td>
 								<c:choose>
 									<c:when test="${book.publisherID==1 }">
-									人民出版社</c:when>
+									人民邮电出版社</c:when>
 									<c:when test="${book.publisherID==2 }">
 									清华大学出版社</c:when>
 									<c:when test="${book.publisherID==3 }">
