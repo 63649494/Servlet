@@ -7,6 +7,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>booklist</title>
+
+<!-- CSS goes in the document HEAD or added to your external stylesheet -->
+<link rel="stylesheet" type="text/css" href="./css/mystyle.css" />
+
 <script type="text/javascript">
 	function showShop(){
 		window.parent.frmMain.location = "cart.jsp";
@@ -20,7 +24,7 @@
 <c:if test="${bookList==null}">
 	<jsp:forward page="SearchBookServlet"></jsp:forward>
 </c:if>
-<table>
+<table align="center">
 	<tr>
 		<td>
 			<table>

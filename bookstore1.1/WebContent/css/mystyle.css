@@ -1,0 +1,41 @@
+thead th {
+background-color: rgb(156, 186, 95);
+color: #fff;
+border-bottom-width: 0;
+}
+
+/* Column Style */
+td {
+color: #000;
+}
+/* Heading and Column Style */
+tr, th {
+border-width: 1px;
+border-style: solid;
+border-color: rgb(156, 186, 95);
+}
+
+/* Padding and font style */
+td, th {
+padding: 5px 10px;
+font-size: 12px;
+font-family: Verdana;
+font-weight: bold;
+}
+
+span {padding: 5px 10px;
+font-size: 12px;
+font-family: Verdana;
+font-weight: bold;}
+
+body {padding: 5px 10px;
+font-size: 12px;
+font-family: Verdana;
+font-weight: bold;}
+
+button{
+padding: 5px 10px;
+font-size: 12px;
+font-family: Verdana;
+font-weight: bold;
+}

@@ -3,6 +3,7 @@
 <%@ page import="com.entity.Book" %>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="./css/mystyle.css" />
 <script type="text/javascript">
 	function ret(){
 		window.location.href="./booklist.jsp";

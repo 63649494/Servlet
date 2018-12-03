@@ -1,8 +1,7 @@
-<!--
 /*---------------------------------------------------------------------------*\
 |  Subject:       Web TreeView Class                                          |
 |  Version:       1.0                                                         |
-|  Author:        »Æ·½ÈÙ¡¾meizz¡¿¡¾Ã·»¨Ñ©¡¿                                   |
+|  Author:        ï¿½Æ·ï¿½ï¿½Ù¡ï¿½meizzï¿½ï¿½ï¿½ï¿½Ã·ï¿½ï¿½Ñ©ï¿½ï¿½                                   |
 |  FileName:      MzTreeView.js                                               |
 |  Created:       2004-10-18                                                  |
 |  LastModified:  2005-03-10                                                  |
@@ -20,13 +19,13 @@
 \*---------------------------------------------------------------------------*/
 
 
-//MzTreeView1.0ÍøÒ³Ê÷Àà, ÔÚÊµÀý»¯µÄÊ±ºòÇë°ÑÊµÀýÃû×÷²ÎÊý´«µÝ½øÀ´
+//MzTreeView1.0ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý½ï¿½ï¿½ï¿½
 function MzTreeView(Tname)
 {
   if(typeof(Tname) != "string" || Tname == "")
-    throw(new Error(-1, '´´½¨ÀàÊµÀýµÄÊ±ºòÇë°ÑÀàÊµÀýµÄÒýÓÃ±äÁ¿Ãû´«µÝ½øÀ´£¡'));
+    throw(new Error(-1, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý½ï¿½ï¿½ï¿½ï¿½ï¿½'));
   
-  //¡¾property¡¿
+  //ï¿½ï¿½propertyï¿½ï¿½
   this.url      = "#";
   this.target   = "_self";
   this.name     = Tname;
@@ -56,33 +55,33 @@ function MzTreeView(Tname)
     "mouseOverBgColor" : "#D4D0C8"
   };
   this.icons    = {
-    L0        : 'L0.gif',  //©³
-    L1        : 'L1.gif',  //©Ç
-    L2        : 'L2.gif',  //©»
-    L3        : 'L3.gif',  //©¥
-    L4        : 'L4.gif',  //©§
-    PM0       : 'P0.gif',  //£«©³
-    PM1       : 'P1.gif',  //£«©Ç
-    PM2       : 'P2.gif',  //£«©»
-    PM3       : 'P3.gif',  //£«©¥
-    empty     : 'L5.gif',     //¿Õ°×Í¼
-    root      : 'root.gif',   //È±Ê¡µÄ¸ù½ÚµãÍ¼±ê
-    folder    : 'folder.gif', //È±Ê¡µÄÎÄ¼þ¼ÐÍ¼±ê
-    file      : 'file.gif',   //È±Ê¡µÄÎÄ¼þÍ¼±ê
+    L0        : 'L0.gif',  //ï¿½ï¿½
+    L1        : 'L1.gif',  //ï¿½ï¿½
+    L2        : 'L2.gif',  //ï¿½ï¿½
+    L3        : 'L3.gif',  //ï¿½ï¿½
+    L4        : 'L4.gif',  //ï¿½ï¿½
+    PM0       : 'P0.gif',  //ï¿½ï¿½ï¿½ï¿½
+    PM1       : 'P1.gif',  //ï¿½ï¿½ï¿½ï¿½
+    PM2       : 'P2.gif',  //ï¿½ï¿½ï¿½ï¿½
+    PM3       : 'P3.gif',  //ï¿½ï¿½ï¿½ï¿½
+    empty     : 'L5.gif',     //ï¿½Õ°ï¿½Í¼
+    root      : 'root.gif',   //È±Ê¡ï¿½Ä¸ï¿½ï¿½Úµï¿½Í¼ï¿½ï¿½
+    folder    : 'folder.gif', //È±Ê¡ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½Í¼ï¿½ï¿½
+    file      : 'file.gif',   //È±Ê¡ï¿½ï¿½ï¿½Ä¼ï¿½Í¼ï¿½ï¿½
     exit      : 'exit.gif'
   };
-  this.iconsExpand = {  //´æ·Å½ÚµãÍ¼Æ¬ÔÚÕ¹¿ªÊ±µÄ¶ÔÓ¦Í¼Æ¬
-    PM0       : 'M0.gif',     //£­©³
-    PM1       : 'M1.gif',     //£­©Ç
-    PM2       : 'M2.gif',     //£­©»
-    PM3       : 'M3.gif',     //£­©¥
+  this.iconsExpand = {  //ï¿½ï¿½Å½Úµï¿½Í¼Æ¬ï¿½ï¿½Õ¹ï¿½ï¿½Ê±ï¿½Ä¶ï¿½Ó¦Í¼Æ¬
+    PM0       : 'M0.gif',     //ï¿½ï¿½ï¿½ï¿½
+    PM1       : 'M1.gif',     //ï¿½ï¿½ï¿½ï¿½
+    PM2       : 'M2.gif',     //ï¿½ï¿½ï¿½ï¿½
+    PM3       : 'M3.gif',     //ï¿½ï¿½ï¿½ï¿½
     folder    : 'folderopen.gif',
 
     exit      : 'exit.gif'
   };
 
-  //À©Õ¹ document.getElementById(id) ¶àä¯ÀÀÆ÷¼æÈÝÐÔ
-  //id Òª²éÕÒµÄ¶ÔÏó id
+  //ï¿½ï¿½Õ¹ document.getElementById(id) ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+  //id Òªï¿½ï¿½ï¿½ÒµÄ¶ï¿½ï¿½ï¿½ id
   this.getElementById = function(id)
   {
     if (typeof(id) != "string" || id == "") return null;
@@ -91,7 +90,7 @@ function MzTreeView(Tname)
     try {return eval(id);} catch(e){ return null;}
   }
 
-  //MzTreeView ³õÊ¼»¯Èë¿Úº¯Êý
+  //MzTreeView ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½Úºï¿½ï¿½ï¿½
   this.toString = function()
   {
     this.browserCheck();
@@ -110,7 +109,7 @@ function MzTreeView(Tname)
         this.name +".focusClientNode('"+ rootCN[0].id +"'); "+ this.name +".atRootIsEmpty()",10);
     }
 
-    if (this.useArrow)  //Ê¹ÓÃ·½Ïò¼ü¿ØÖÆÌø×ªµ½ÉÏ¼¶ÏÂ¼¶¸¸¼¶×Ó¼¶½Úµã
+    if (this.useArrow)  //Ê¹ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½Ï¼ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¼ï¿½ï¿½Úµï¿½
     {
       if (document.attachEvent)
           document.attachEvent("onkeydown", this.onkeydown);
@@ -136,7 +135,7 @@ function MzTreeView(Tname)
   };
 }
 
-//ä¯ÀÀÆ÷ÀàÐÍ¼°°æ±¾¼ì²â
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½æ±¾ï¿½ï¿½ï¿½
 MzTreeView.prototype.browserCheck = function()
 {
   var ua = window.navigator.userAgent.toLowerCase(), bname;
@@ -156,7 +155,7 @@ MzTreeView.prototype.browserCheck = function()
   if(window.opera) this.wordLine = false;
 };
 
-//¸ø TreeView Ê÷¼ÓÉÏÑùÊ½ÉèÖÃ
+//ï¿½ï¿½ TreeView ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½
 MzTreeView.prototype.setStyle = function()
 {
   /*
@@ -209,7 +208,7 @@ MzTreeView.prototype.setStyle = function()
   document.write(style);
 };
 
-//µ±¸ù½ÚµãÎª¿ÕµÄÊ±ºò×öµÄ´¦Àí
+//ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½Îªï¿½Õµï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½Ä´ï¿½ï¿½ï¿½
 MzTreeView.prototype.atRootIsEmpty = function()
 {
   var RCN = this.node["0"].childNodes;
@@ -223,7 +222,7 @@ MzTreeView.prototype.atRootIsEmpty = function()
       {
         var span = this.getElementById(this.name +"_tree_"+ node.id);
         span = span.childNodes[0].childNodes[0].childNodes[0];
-        span.innerHTML = RCN[i].childNodes.length>1 ? "©°" : "©¤";
+        span.innerHTML = RCN[i].childNodes.length>1 ? "ï¿½ï¿½" : "ï¿½ï¿½";
       }
       else
       {
@@ -234,7 +233,7 @@ MzTreeView.prototype.atRootIsEmpty = function()
   }
 };
 
-//³õÊ¼»¯Êý¾ÝÔ´ÀïµÄÊý¾ÝÒÔ±ãºóÃæµÄ¿ìËÙ¼ìË÷
+//ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½Ù¼ï¿½ï¿½ï¿½
 MzTreeView.prototype.dataFormat = function()
 {
   var a = new Array();
@@ -243,8 +242,8 @@ MzTreeView.prototype.dataFormat = function()
   this.totalNode = a.length; a = null;
 };
 
-//ÔÚÊý¾ÝÔ´¼ìË÷ËùÐèµÄÊý¾Ý½Úµã
-//id  ¿Í»§¶Ë½Úµã¶ÔÓ¦µÄid
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý½Úµï¿½
+//id  ï¿½Í»ï¿½ï¿½Ë½Úµï¿½ï¿½Ó¦ï¿½ï¿½id
 MzTreeView.prototype.load = function(id)
 {
   var node = this.node[id], d = this.divider, _d = this._d;
@@ -256,9 +255,9 @@ MzTreeView.prototype.load = function(id)
   node.isLoad = true;
 };
 
-//³õÊ¼»¯½ÚµãÐÅÏ¢, ¸ù¾Ý this.nodes Êý¾ÝÔ´Éú³É½ÚµãµÄÏêÏ¸ÐÅÏ¢
-//sourceIndex Êý¾ÝÔ´ÖÐµÄ¸¸×Ó½Úµã×éºÏµÄ×Ö·û´® 0_1
-//parentId    µ±Ç°Ê÷½ÚµãÔÚ¿Í»§¶ËµÄ¸¸½ÚµãµÄ id
+//ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½Ï¢, ï¿½ï¿½ï¿½ï¿½ this.nodes ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½ï¿½É½Úµï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½Ï¢
+//sourceIndex ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ÐµÄ¸ï¿½ï¿½Ó½Úµï¿½ï¿½ï¿½Ïµï¿½ï¿½Ö·ï¿½ï¿½ï¿½ 0_1
+//parentId    ï¿½ï¿½Ç°ï¿½ï¿½ï¿½Úµï¿½ï¿½Ú¿Í»ï¿½ï¿½ËµÄ¸ï¿½ï¿½Úµï¿½ï¿½ id
 MzTreeView.prototype.nodeInit = function(sourceIndex, parentId)
 {
   this.index++;
@@ -286,18 +285,18 @@ MzTreeView.prototype.nodeInit = function(sourceIndex, parentId)
   return this.node[this.index];
 };
 
-//´ÓXML¸ñÊ½×Ö·û´®ÀïÌáÈ¡ÐÅÏ¢
-//source Êý¾ÝÔ´ÀïµÄ½ÚµãÐÅÏ¢×Ö·û´®(ÒÔºó¿ÉÒÔÀ©Õ¹¶ÔXMLµÄÖ§³Ö)
-//name   ÒªÌáÈ¡µÄÊôÐÔÃû
+//ï¿½ï¿½XMLï¿½ï¿½Ê½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½Ï¢
+//source ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½Ä½Úµï¿½ï¿½ï¿½Ï¢ï¿½Ö·ï¿½ï¿½ï¿½(ï¿½Ôºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ¹ï¿½ï¿½XMLï¿½ï¿½Ö§ï¿½ï¿½)
+//name   Òªï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 MzTreeView.prototype.getAttribute = function(source, name)
 {
   var reg = new RegExp("(^|;|\\s)"+ name +"\\s*:\\s*([^;]*)(\\s|;|$)", "i");
   if (reg.test(source)) return RegExp.$2.replace(/[\x0f]/g, ";"); return "";
 };
 
-//¸ù¾Ý½ÚµãµÄÏêÏ¸ÐÅÏ¢Éú³ÉHTML
-//node   Ê÷ÔÚ¿Í»§¶ËµÄ½Úµã¶ÔÏó
-//AtEnd  ²¼¶ûÖµ  µ±Ç°Òª×ª»»µÄÕâ¸ö½ÚµãÊÇ·ñÎª¸¸½ÚµãµÄ×Ó½Úµã¼¯ÖÐµÄ×îºóÒ»Ïî
+//ï¿½ï¿½ï¿½Ý½Úµï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½HTML
+//node   ï¿½ï¿½ï¿½Ú¿Í»ï¿½ï¿½ËµÄ½Úµï¿½ï¿½ï¿½ï¿½
+//AtEnd  ï¿½ï¿½ï¿½ï¿½Öµ  ï¿½ï¿½Ç°Òª×ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½Ç·ï¿½Îªï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½Ó½Úµã¼¯ï¿½Ðµï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
 MzTreeView.prototype.nodeToHTML = function(node, AtEnd)
 {
   var source = this.nodes[node.sourceIndex];
@@ -313,15 +312,15 @@ MzTreeView.prototype.nodeToHTML = function(node, AtEnd)
   if(isRoot && node.icon=="") node.icon = "root";
   if(node.icon=="" || typeof(this.icons[node.icon])=="undefined")
     node.icon = HCN ? "folder" : "file";
-  node.iconExpand  = AtEnd ? "©¸" : "©À";
+  node.iconExpand  = AtEnd ? "ï¿½ï¿½" : "ï¿½ï¿½";
 
   var HTML = "<DIV noWrap='True'><NOBR>";
   if(!isRoot)
   {
-    node.childAppend = node.parentNode.childAppend + (AtEnd ? "¡¡" : "©¦");
+    node.childAppend = node.parentNode.childAppend + (AtEnd ? "ï¿½ï¿½" : "ï¿½ï¿½");
     if(this.wordLine)
     {
-      HTML += "<SPAN>"+ node.parentNode.childAppend + (AtEnd ? "©¸" : "©À") +"</SPAN>";
+      HTML += "<SPAN>"+ node.parentNode.childAppend + (AtEnd ? "ï¿½ï¿½" : "ï¿½ï¿½") +"</SPAN>";
       if(HCN) HTML += "<SPAN class='pm' id='"+ this.name +"_expand_"+ id +"'>+</SPAN>";
     }
     else
@@ -352,7 +351,7 @@ MzTreeView.prototype.nodeToHTML = function(node, AtEnd)
   return HTML;
 };
 
-//ÔÚÊ¹ÓÃÍ¼Æ¬µÄÊ±ºò¶Ô node.childAppend µÄ×ª»»
+//ï¿½ï¿½Ê¹ï¿½ï¿½Í¼Æ¬ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ node.childAppend ï¿½ï¿½×ªï¿½ï¿½
 MzTreeView.prototype.word2image = function(word)
 {
   var str = "";
@@ -361,12 +360,12 @@ MzTreeView.prototype.word2image = function(word)
     var img = "";
     switch (word.charAt(i))
     {
-      case "©¦" : img = "L4"; break;
-      case "©¸" : img = "L2"; break;
-      case "¡¡" : img = "empty"; break;
-      case "©À" : img = "L1"; break;
-      case "©¤" : img = "L3"; break;
-      case "©°" : img = "L0"; break;
+      case "ï¿½ï¿½" : img = "L4"; break;
+      case "ï¿½ï¿½" : img = "L2"; break;
+      case "ï¿½ï¿½" : img = "empty"; break;
+      case "ï¿½ï¿½" : img = "L1"; break;
+      case "ï¿½ï¿½" : img = "L3"; break;
+      case "ï¿½ï¿½" : img = "L0"; break;
     }
     if(img!="")
       str += "<IMG align='absMiddle' src='"+ this.icons[img].src +"' height='20'>";
@@ -375,8 +374,8 @@ MzTreeView.prototype.word2image = function(word)
 }
 
 
-//½«Ä³¸ö½ÚµãÏÂµÄËùÓÐ×Ó½Úµã×ª»¯³ÉÏêÏ¸µÄ<HTML>ÔªËØ±í´ï
-//id Ê÷µÄ¿Í»§¶Ë½Úµã id
+//ï¿½ï¿½Ä³ï¿½ï¿½ï¿½Úµï¿½ï¿½Âµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó½Úµï¿½×ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½<HTML>Ôªï¿½Ø±ï¿½ï¿½
+//id ï¿½ï¿½ï¿½Ä¿Í»ï¿½ï¿½Ë½Úµï¿½ id
 MzTreeView.prototype.buildNode = function(id)
 {
   if(this.node[id].hasChild)
@@ -389,8 +388,8 @@ MzTreeView.prototype.buildNode = function(id)
   }
 };
 
-//¾Û¼¯µ½¿Í»§¶ËÉú³ÉµÄÄ³¸ö½ÚµãÉÏ
-//id  ¿Í»§¶ËÊ÷½ÚµãµÄid
+//ï¿½Û¼ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Éµï¿½Ä³ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½
+//id  ï¿½Í»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½id
 MzTreeView.prototype.focusClientNode      = function(id)
 {
   if(!this.currentNode) this.currentNode=this.node["0"];
@@ -403,15 +402,15 @@ MzTreeView.prototype.focusClientNode      = function(id)
   this.currentNode= this.node[id];}
 };
 
-//½¹µã¾Û¼¯µ½Ê÷ÀïµÄ½ÚµãÁ´½ÓÊ±µÄ´¦Àí
-//id ¿Í»§¶Ë½Úµã id
+//ï¿½ï¿½ï¿½ï¿½Û¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä½Úµï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½Ä´ï¿½ï¿½ï¿½
+//id ï¿½Í»ï¿½ï¿½Ë½Úµï¿½ id
 MzTreeView.prototype.focusLink= function(id)
 {
   if(this.currentNode && this.currentNode.id==id) return;
   this.focusClientNode(id);
 };
 
-//µã»÷Õ¹¿ªÊ÷½ÚµãµÄ¶ÔÓ¦·½·¨
+//ï¿½ï¿½ï¿½Õ¹ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½Ä¶ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½
 MzTreeView.prototype.expand   = function(id, sureExpand)
 {
   var node  = this.node[id];
@@ -445,24 +444,24 @@ MzTreeView.prototype.expand   = function(id, sureExpand)
       this.load(id);
       if(node.id=="0") return;
 
-      //µ±×Ó½Úµã¹ý¶àÊ±, ¸øÓÃ»§Ò»¸öÕýÔÚ¼ÓÔØµÄÌáÊ¾Óï¾ä
+      //ï¿½ï¿½ï¿½Ó½Úµï¿½ï¿½ï¿½ï¿½Ê±, ï¿½ï¿½ï¿½Ã»ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ú¼ï¿½ï¿½Øµï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½
       if(node.hasChild && node.childNodes.length>200)
       {
         setTimeout(this.name +".buildNode('"+ id +"')", 1);
         var temp = this.getElementById(this.name +"_tree_"+ id).childNodes;
         temp[temp.length-1].innerHTML = "<DIV noWrap><NOBR><SPAN>"+ (this.wordLine ?
-        node.childAppend +"©¸" : this.word2image(node.childAppend +"©¸")) +"</SPAN>"+
+        node.childAppend +"ï¿½ï¿½" : this.word2image(node.childAppend +"ï¿½ï¿½")) +"</SPAN>"+
         "<IMG border='0' height='16' align='absmiddle' src='"+this.icons["file"].src+"'>"+
         "<A style='background-Color: "+ this.colors.highLight +"; color: "+
-        this.colors.highLightText +"; font-size: 9pt'>ÇëÉÔºò...</A></NOBR></DIV>";
+        this.colors.highLightText +"; font-size: 9pt'>ï¿½ï¿½ï¿½Ôºï¿½...</A></NOBR></DIV>";
       }
       else this.buildNode(id);
     }
   }
 };
 
-//½ÚµãÁ´½Óµ¥»÷ÊÂ¼þ´¦Àí·½·¨
-//id ¿Í»§¶ËÊ÷½ÚµãµÄ id
+//ï¿½Úµï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//id ï¿½Í»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ id
 MzTreeView.prototype.nodeClick = function(id)
 {
   var source = this.nodes[this.node[id].sourceIndex];
@@ -470,8 +469,8 @@ MzTreeView.prototype.nodeClick = function(id)
   return !(!this.getAttribute(source, "url") && this.url=="#");
 };
 
-//ÎªÅäºÏÏµÍ³³õÊ¼¾Û¼¯Ä³½Úµã¶øÐ´µÄº¯Êý, µÃµ½Ä³½ÚµãÔÚÊý¾ÝÔ´ÀïµÄÂ·¾¶
-//sourceId Êý¾ÝÔ´ÀïµÄ½Úµã id
+//Îªï¿½ï¿½ï¿½ÏµÍ³ï¿½ï¿½Ê¼ï¿½Û¼ï¿½Ä³ï¿½Úµï¿½ï¿½Ð´ï¿½Äºï¿½ï¿½ï¿½, ï¿½Ãµï¿½Ä³ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½ï¿½Â·ï¿½ï¿½
+//sourceId ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½Ä½Úµï¿½ id
 MzTreeView.prototype.getPath= function(sourceId)
 {
   Array.prototype.indexOf = function(item)
@@ -498,8 +497,8 @@ MzTreeView.prototype.getPath= function(sourceId)
   return A.reverse();
 };
 
-//ÔÚÔ´´úÂëÀïÖ¸¶¨ MzTreeView ³õÊ¼¾Û¼¯µ½Ä³¸ö½Úµã
-//sourceId ½ÚµãÔÚÊý¾ÝÔ´ÀïµÄ id
+//ï¿½ï¿½Ô´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ MzTreeView ï¿½ï¿½Ê¼ï¿½Û¼ï¿½ï¿½ï¿½Ä³ï¿½ï¿½ï¿½Úµï¿½
+//sourceId ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½ï¿½ id
 MzTreeView.prototype.focus = function(sourceId, defer)
 {
   if (!defer)
@@ -510,8 +509,8 @@ MzTreeView.prototype.focus = function(sourceId, defer)
   var path = this.getPath(sourceId);
   if(path[0]!="0")
   {
-    alert("½Úµã "+ sourceId +" Ã»ÓÐÕýÈ·µÄ¹Ò¿¿ÓÐÐ§Ê÷½ÚµãÉÏ£¡\r\n"+
-      "½Úµã id ÐòÁÐ = "+ path.join(this.divider));
+    alert("ï¿½Úµï¿½ "+ sourceId +" Ã»ï¿½ï¿½ï¿½ï¿½È·ï¿½Ä¹Ò¿ï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½Úµï¿½ï¿½Ï£ï¿½\r\n"+
+      "ï¿½Úµï¿½ id ï¿½ï¿½ï¿½ï¿½ = "+ path.join(this.divider));
     return;
   }
   var root = this.node["0"], len = path.length;
@@ -534,7 +533,7 @@ MzTreeView.prototype.focus = function(sourceId, defer)
   }
 };
 
-//Ê÷µÄµ¥»÷ÊÂ¼þ´¦Àíº¯Êý
+//ï¿½ï¿½ï¿½Äµï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 MzTreeView.prototype.clickHandle = function(e)
 {
   e = window.event || e; e = e.srcElement || e.target;
@@ -565,7 +564,7 @@ MzTreeView.prototype.clickHandle = function(e)
   }
 };
 
-//MzTreeView Ë«»÷ÊÂ¼þµÄ´¦Àíº¯Êý
+//MzTreeView Ë«ï¿½ï¿½ï¿½Â¼ï¿½ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½
 MzTreeView.prototype.dblClickHandle = function(e)
 {
   e = window.event || e; e = e.srcElement || e.target;
@@ -576,7 +575,7 @@ MzTreeView.prototype.dblClickHandle = function(e)
   }
 };
 
-//»Øµ½Ê÷µ±Ç°½ÚµãµÄ¸¸²ã½Úµã
+//ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½Ç°ï¿½Úµï¿½Ä¸ï¿½ï¿½ï¿½Úµï¿½
 MzTreeView.prototype.upperNode = function()
 {
   if(!this.currentNode) return;
@@ -586,7 +585,7 @@ MzTreeView.prototype.upperNode = function()
   else this.focusClientNode(this.currentNode.parentId);
 };
 
-//Õ¹¿ªµ±Ç°½Úµã²¢
+//Õ¹ï¿½ï¿½ï¿½ï¿½Ç°ï¿½Úµã²¢
 MzTreeView.prototype.lowerNode = function()
 {
   if (!this.currentNode) this.currentNode = this.node["0"];
@@ -598,7 +597,7 @@ MzTreeView.prototype.lowerNode = function()
   }
 }
 
-//¾Û¼¯µ½Ê÷µ±Ç°½ÚµãµÄÉÏÒ»½Úµã
+//ï¿½Û¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç°ï¿½Úµï¿½ï¿½ï¿½ï¿½Ò»ï¿½Úµï¿½
 MzTreeView.prototype.pervNode = function()
 {
   if(!this.currentNode) return; var e = this.currentNode;
@@ -610,7 +609,7 @@ MzTreeView.prototype.pervNode = function()
   this.focusClientNode(e.parentId); return;}}}
 };
 
-//¾Û¼¯µ½Ê÷µ±Ç°½ÚµãµÄÏÂÒ»½Úµã
+//ï¿½Û¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç°ï¿½Úµï¿½ï¿½ï¿½ï¿½Ò»ï¿½Úµï¿½
 MzTreeView.prototype.nextNode = function()
 {
   var e = this.currentNode; if(!e) e = this.node["0"];
@@ -623,11 +622,11 @@ MzTreeView.prototype.nextNode = function()
   else e = this.node[e.parentId];}}}
 };
 
-//Õ¹¿ªÊ÷µÄËùÓÐ½Úµã
+//Õ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð½Úµï¿½
 MzTreeView.prototype.expandAll = function()
 {
   if(this.totalNode>500) if(
-    confirm("ÄúÊÇ·ñÒªÍ£Ö¹Õ¹¿ªÈ«²¿½Úµã£¿\r\n\r\n½Úµã¹ý¶à£¡Õ¹¿ªºÜºÄÊ±")) return;
+    confirm("ï¿½ï¿½ï¿½Ç·ï¿½ÒªÍ£Ö¹Õ¹ï¿½ï¿½È«ï¿½ï¿½ï¿½Úµã£¿\r\n\r\nï¿½Úµï¿½ï¿½ï¿½à£¡Õ¹ï¿½ï¿½ï¿½Üºï¿½Ê±")) return;
   if(this.node["0"].childNodes.length==0) return;
   var e = this.node["0"].childNodes[0];
   var isdo = t = false;
@@ -658,8 +657,8 @@ MzTreeView.prototype.expandAll = function()
   }
 };
 
-//±¾Ê÷½«ÒªÓÃ¶¯µÄÍ¼Æ¬µÄ×ÖÒå¼°Ô¤ÔØº¯Êý
-//path Í¼Æ¬´æ·ÅµÄÂ·¾¶Ãû
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½Ã¶ï¿½ï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½ï¿½ï¿½å¼°Ô¤ï¿½Øºï¿½ï¿½ï¿½
+//path Í¼Æ¬ï¿½ï¿½Åµï¿½Â·ï¿½ï¿½ï¿½ï¿½
 MzTreeView.prototype.setIconPath  = function(path)
 {
   var k = 0, d = new Date().getTime();
@@ -679,11 +678,11 @@ MzTreeView.prototype.setIconPath  = function(path)
   }
 };
 
-//ÉèÖÃÊ÷µÄÄ¬ÈÏÁ´½Ó
-//url Ä¬ÈÏÁ´½Ó  Èô²»ÉèÖÃ, Æä³õÊ¼ÖµÎª #
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//url Ä¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½Ê¼ÖµÎª #
 MzTreeView.prototype.setURL     = function(url){this.url = url;};
 
-//ÉèÖÃÊ÷µÄÄ¬ÈÏµÄÄ¿±ê¿ò¼ÜÃû target
-//target Ä¿±ê¿ò¼ÜÃû  Èô²»ÉèÖÃ, Æä³õÊ¼ÖµÎª _self
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½Ïµï¿½Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ target
+//target Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½Ê¼ÖµÎª _self
 MzTreeView.prototype.setTarget  = function(target){this.target = target;};
 // -->
