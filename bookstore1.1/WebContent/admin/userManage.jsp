@@ -9,7 +9,6 @@
 <title>ÍøÉÏÊéµêºóÌ¨¹ÜÀíÏµÍ³</title>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>booklist</title>
-<link rel="stylesheet" type="text/css" href="../css/mystyle.css" />
 <script type="text/javascript">
 	function select(){
 		document.search.submit();

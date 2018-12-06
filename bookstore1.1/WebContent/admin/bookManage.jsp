@@ -8,7 +8,6 @@
 <title>ÍøÉÏÊéµêºóÌ¨¹ÜÀíÏµÍ³</title>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>booklist</title>
-<link rel="stylesheet" type="text/css" href="../css/mystyle.css" />
 <script type="text/javascript">
 	function select(){
 		document.search.submit();
@@ -122,14 +121,14 @@
 			if(xmlHttp.status == 200){
 				//È¥³ý·þÎñÆ÷·µ»ØµÄjson×Ö·û×ª»»Îªjson¶ÔÏó
 				//alert(xmlHttp.responseText);
-				book = eval("("+xmlHttp.responseText+")");
+				book = eval(+xmlHttp.responseText);
 				//ÏÔÊ¾ÃûÎªtipµÄdiv²ã£¬¸Ã²ãÏÔÊ¾¹¤¾ßÌáÊ¾ÐÅÏ¢
 				document.all.bookTip.style.display = "block";
 				document.all.bookTip.style.top = y;
 				document.all.bookTip.style.left = x+10;
-				//document.all.showPic.src = "../images/bookcovers/"+book.pic;
+				document.all.showPic.src = "../images/bookcovers/"+book.pic;
 				document.all.tipTable.rows[0].cells[1].innerHTML = book.bookName;
-				document.all.tipTable.rows[1].cells[1].innerHTML = book.isbn;
+				document.all.tipTable.rows[1].cells[1].innerHTML = book.bookisbn;
 				if(book.publisherID == 1){
 					document.all.tipTable.rows[2].cells[1].innerHTML = "ÈËÃñÓÊµç³ö°æÉç";
 				}else if(book.publisherID == 2){
@@ -250,15 +249,15 @@
 	</tr>
 </table>
 
-<div id="bookTip" style="position:absolute;border:1px;border-style:solid;display:none;">
-	<table bgcolor="#ffffee" >
+<div id="bookTip" style="position:absolute;border:1px;border-style:solid;">
+	<table bgcolor="#ffffee">
 		<tr>
 			<td>
 				<img height=260 alt="" src="" width=202 style="cursor:pointer" id="showPic">
 			</td>
 			
 			<td>
-			<table id="tipTable">
+			<table>
 				<tr>
 					<td>Í¼ÊéÃû³Æ:</td>
 					<td></td>

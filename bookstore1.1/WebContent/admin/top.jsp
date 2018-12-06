@@ -2,7 +2,6 @@
 <html>
 <head>
 <title>网上书店系统</title>
-<link rel="stylesheet" type="text/css" href="../css/mystyle.css" />
 </head>
 <body topmargin="0px">
 <%

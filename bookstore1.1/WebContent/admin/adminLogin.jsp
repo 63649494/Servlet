@@ -6,7 +6,6 @@
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="expires" content="0">
-<link rel="stylesheet" type="text/css" href="../css/mystyle.css" />
 <script language="javascript">
 /**************************************************** 
  º¯ÊýÃû³Æ£ºloginClick 

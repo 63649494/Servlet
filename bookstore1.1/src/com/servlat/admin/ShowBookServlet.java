@@ -56,14 +56,14 @@ public class ShowBookServlet extends HttpServlet {
 			dao.getConn(server, dbname, user, pwd);
 			Book book = dao.getBookByIsbn(isbn);
 			if(book!=null){
-				bookJson = "{isbn:'"+book.getIsbn()+"',"
-							+"bookName:'"+book.getBookName()+"',"
-							+"publisherID:'"+book.getPublisherID()+"',"
-							+"price:'"+book.getPrice()+"',"
-							+"count:'"+book.getCount()+"',"
-							+"pic:'"+book.getPic()+"',"
-							+"description:'"+book.getDescription().trim()+
-							"'"+"}";
+				bookJson = "isbn:"+book.getIsbn()+","
+							+"bookName:"+book.getBookName()+","
+							+"publisherID:"+book.getPublisherID()+","
+							+"price:"+book.getPrice()+","
+							+"count:"+book.getCount()+","
+							+"pic:"+book.getPic()+","
+							+"description:"+book.getDescription().trim()+					
+							"";
 			}
 		}catch(Exception e){
 			e.printStackTrace();

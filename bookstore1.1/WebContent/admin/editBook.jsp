@@ -3,7 +3,6 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="../css/mystyle.css" />
 <script type="text/javascript">
 function changPic(obj){
 	var filename = obj.value;
